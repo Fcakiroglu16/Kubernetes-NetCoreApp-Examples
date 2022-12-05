@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-redis-api
+  labels:
+    app: deployment-label-redis-api
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: redis-api-pod
+      labels:
+        app: redis-api
+    spec:
+      containers:
+        - name: redis-api-container
+          image: docker.io/fcakiroglu16/example:v1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: Redis__Host
+              value: redis-master
+            - name: Redis__Port
+              value: '6379'
+            - name: Redis__Password
+              valueFrom:
+                secretKeyRef:
+                  key: redis-password
+                  name: redis
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: redis-api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-redis-api
+spec:
+  selector:
+    app: redis-api
+  ports:
+    - port: 8080
+      targetPort: 80
+  type: NodePort

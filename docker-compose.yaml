@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  RedisWeb.api:
+    image: fcakiroglu16/example:v1
+    build:
+      context: .
+      dockerfile: RedisWeb.API/Dockerfile
