@@ -5,8 +5,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DockerCompose", "DockerComp
 		docker-compose.yaml = docker-compose.yaml
 		docker-compose.override.yaml = docker-compose.override.yaml
 		service-and-deployment.yaml = service-and-deployment.yaml
-		secret.yaml = secret.yaml
+		readme.txt = readme.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProducerKafka.API", "ProducerKafka.API\ProducerKafka.API.csproj", "{F98EC34B-FC87-4993-9008-BF27B7DA4C07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{BBFA952C-BE9C-40D2-9541-D74AE2BCA309}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KafkaConsole", "KafkaConsole\KafkaConsole.csproj", "{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,5 +20,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F98EC34B-FC87-4993-9008-BF27B7DA4C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98EC34B-FC87-4993-9008-BF27B7DA4C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F98EC34B-FC87-4993-9008-BF27B7DA4C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98EC34B-FC87-4993-9008-BF27B7DA4C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBFA952C-BE9C-40D2-9541-D74AE2BCA309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBFA952C-BE9C-40D2-9541-D74AE2BCA309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBFA952C-BE9C-40D2-9541-D74AE2BCA309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBFA952C-BE9C-40D2-9541-D74AE2BCA309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
