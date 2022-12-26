@@ -1,13 +1,13 @@
-﻿using Confluent.Kafka;
-using System.Text.Json;
+﻿using System.Text.Json;
+using Confluent.Kafka;
 
-namespace Producer.API.Kafka
+namespace Consumer.API.Kafka
 {
     public class CustomValueDeserializer<T> : IDeserializer<T>
     {
         public T Deserialize(ReadOnlySpan<byte> data, bool isNull, SerializationContext context)
         {
-            return JsonSerializer.Deserialize<T>(data);
+            return JsonSerializer.Deserialize<T>(data)!;
         }
     }
 }

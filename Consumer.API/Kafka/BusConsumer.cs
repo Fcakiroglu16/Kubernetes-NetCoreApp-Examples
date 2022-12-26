@@ -1,5 +1,4 @@
 ﻿using Confluent.Kafka;
-using Producer.API.Kafka;
 
 namespace Consumer.API.Kafka
 {

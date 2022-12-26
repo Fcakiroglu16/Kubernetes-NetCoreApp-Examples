@@ -5,11 +5,11 @@ namespace Producer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class userController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly BusProducer<UserNameChangedEvent> _busProducer;
 
-        public userController(BusProducer<UserNameChangedEvent> busProducer)
+        public UserController(BusProducer<UserNameChangedEvent> busProducer)
         {
             _busProducer = busProducer;
         }
