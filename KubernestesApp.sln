@@ -1,18 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33209.295
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DockerCompose", "DockerCompose", "{51AF0337-8F1E-4D88-BB10-A592DA9EF45E}"
 	ProjectSection(SolutionItems) = preProject
-		docker-compose.yaml = docker-compose.yaml
-		docker-compose.override.yaml = docker-compose.override.yaml
-		service-and-deployment.yaml = service-and-deployment.yaml
+		docker-compose.yml = docker-compose.yml
 		readme.txt = readme.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProducerKafka.API", "ProducerKafka.API\ProducerKafka.API.csproj", "{F98EC34B-FC87-4993-9008-BF27B7DA4C07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KafkaProducer", "KafkaConsole\KafkaProducer.csproj", "{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{BBFA952C-BE9C-40D2-9541-D74AE2BCA309}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KafkaConsole", "KafkaConsole\KafkaConsole.csproj", "{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KafkaConsumer", "KafkaProducer\KafkaConsumer.csproj", "{BEA6EB5C-B246-4008-8EA0-5FA41913FF97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,17 +19,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F98EC34B-FC87-4993-9008-BF27B7DA4C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F98EC34B-FC87-4993-9008-BF27B7DA4C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F98EC34B-FC87-4993-9008-BF27B7DA4C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F98EC34B-FC87-4993-9008-BF27B7DA4C07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBFA952C-BE9C-40D2-9541-D74AE2BCA309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBFA952C-BE9C-40D2-9541-D74AE2BCA309}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBFA952C-BE9C-40D2-9541-D74AE2BCA309}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBFA952C-BE9C-40D2-9541-D74AE2BCA309}.Release|Any CPU.Build.0 = Release|Any CPU
 		{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEA6EB5C-B246-4008-8EA0-5FA41913FF97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEA6EB5C-B246-4008-8EA0-5FA41913FF97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEA6EB5C-B246-4008-8EA0-5FA41913FF97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEA6EB5C-B246-4008-8EA0-5FA41913FF97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8156ED9-2387-4890-B6A4-0E944D60C89B}
 	EndGlobalSection
 EndGlobal

@@ -5,24 +5,37 @@ using Confluent.Kafka.Admin;
 
 Console.WriteLine("Hello, World!");
 
-using (var adminClient = new AdminClientBuilder(new AdminClientConfig { BootstrapServers = "localhost:9092" }).Build())
+await CreateTopic();
+
+await SendMessage();
+async Task CreateTopic()
 {
+    using var adminClient = new AdminClientBuilder(new AdminClientConfig { BootstrapServers = "localhost:9092" }).Build();
     try
     {
-        await adminClient.CreateTopicsAsync(new TopicSpecification[] {
+        await adminClient.CreateTopicsAsync(new[] {
             new TopicSpecification { Name = "mytopic", ReplicationFactor = 1, NumPartitions = 1 } });
     }
     catch (CreateTopicsException e)
     {
-        Console.WriteLine($"An error occured creating topic {e.Results[0].Topic}: {e.Results[0].Error.Reason}");
+        Console.WriteLine(e.Message);
     }
 }
 
-//var config = new ProducerConfig { BootstrapServers = "localhost:9092" };
+async Task SendMessage()
+{
+    var config = new ProducerConfig { BootstrapServers = "localhost:9092" };
 
-//using var producer = new ProducerBuilder<string, string>(config).Build();
+    using var producer = new ProducerBuilder<Null, string>(config).Build();
 
-//var deliveryReport = await producer.ProduceAsync(
-//    "hello_world", new Message<string, string> { Key = "name", Value = "asp.net mvc" });
-
-//Console.WriteLine($"delivered to: {deliveryReport.TopicPartitionOffset}");
+    foreach (var item in Enumerable.Range(1, 10).ToList())
+    {
+        var result = await producer.ProduceAsync("mytopic", new Message<Null, string> { Value = $"a log message {item}", Timestamp = Timestamp.Default });
+        foreach (var propertyInfo in result.GetType().GetProperties())
+        {
+            Console.WriteLine($"{propertyInfo.Name} = {propertyInfo.GetValue(result)}");
+        }
+        Console.WriteLine("---------------");
+        await Task.Delay(500);
+    }
+}
