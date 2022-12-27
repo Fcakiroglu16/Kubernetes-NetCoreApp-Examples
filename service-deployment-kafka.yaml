@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-producer-api
+  labels:
+    app: deployment-label-producer-api
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: producer-api-pod
+      labels:
+        app: producer-api
+    spec:
+      containers:
+        - name: producer-api-container
+          image: docker.io/fcakiroglu16/kafka-producer-api:v1
+          imagePullPolicy: Always
+          env:
+            - name: KafkaSettings__Host
+              value: my-release-kafka
+            - name: KafkaSettings__Port
+              value: '9092'
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: producer-api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-producer-api
+spec:
+  selector:
+    app: producer-api
+  ports:
+    - port: 8080
+      targetPort: 80
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-consumer-api
+  labels:
+    app: deployment-label-consumer-api
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: consumer-api-pod
+      labels:
+        app: consumer-api
+    spec:
+      containers:
+        - name: consumer-api-container
+          image: docker.io/fcakiroglu16/kafka-consumer-api:v1
+          imagePullPolicy: Always
+          env:
+            - name: KafkaSettings__Host
+              value: my-release-kafka
+            - name: KafkaSettings__Port
+              value: '9092'
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: consumer-api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-consumer-api
+spec:
+  selector:
+    app: consumer-api
+  ports:
+    - port: 8085
+      targetPort: 80
+  type: NodePort
