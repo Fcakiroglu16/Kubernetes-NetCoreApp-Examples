@@ -6,7 +6,7 @@ Console.WriteLine("Message is reading");
 var config = new ConsumerConfig
 {
     BootstrapServers = "localhost:9092",
-    GroupId = "mygroup-l",
+    GroupId = "mygroup-a",
     AutoOffsetReset = AutoOffsetReset.Earliest,
     EnableAutoCommit = false
 };
