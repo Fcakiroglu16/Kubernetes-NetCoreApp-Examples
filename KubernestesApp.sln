@@ -3,16 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33209.295
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DockerCompose", "DockerCompose", "{51AF0337-8F1E-4D88-BB10-A592DA9EF45E}"
-	ProjectSection(SolutionItems) = preProject
-		docker-compose.yml = docker-compose.yml
-		readme.txt = readme.txt
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KafkaProducer", "KafkaConsole\KafkaProducer.csproj", "{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KafkaConsumer", "KafkaProducer\KafkaConsumer.csproj", "{BEA6EB5C-B246-4008-8EA0-5FA41913FF97}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumer.API", "Consumer.API\Consumer.API.csproj", "{661EA9AB-F64E-4823-9A21-7DC8909D2319}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Producer.API", "Producer.API\Producer.API.csproj", "{09D75B36-5F8F-42E2-A464-D86C8E301E52}"
@@ -23,14 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29EEDB85-4A53-4D9C-A0F8-99B40ED1E72A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BEA6EB5C-B246-4008-8EA0-5FA41913FF97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEA6EB5C-B246-4008-8EA0-5FA41913FF97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BEA6EB5C-B246-4008-8EA0-5FA41913FF97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEA6EB5C-B246-4008-8EA0-5FA41913FF97}.Release|Any CPU.Build.0 = Release|Any CPU
 		{661EA9AB-F64E-4823-9A21-7DC8909D2319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{661EA9AB-F64E-4823-9A21-7DC8909D2319}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{661EA9AB-F64E-4823-9A21-7DC8909D2319}.Release|Any CPU.ActiveCfg = Release|Any CPU
