@@ -1,34 +1,41 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
 using Confluent.Kafka;
+using Confluent.Kafka.Admin;
 
-Console.WriteLine("Message is reading");
+Console.WriteLine("Hello, World!");
 
-var config = new ConsumerConfig
+await CreateTopic();
+
+await SendMessage();
+async Task CreateTopic()
 {
-    BootstrapServers = "localhost:9092",
-    GroupId = "mygroup-l",
-    AutoOffsetReset = AutoOffsetReset.Earliest,
-    EnableAutoCommit = false
-};
-
-var consumer = new ConsumerBuilder<Ignore, string>(config).Build();
-consumer.Subscribe("mytopic");
-
-while (true)
-{
-    var consumeResult = consumer.Consume();
-
-    Console.WriteLine(consumeResult.Message.Value);
-
-    //“at least once” delivery semantics
+    using var adminClient = new AdminClientBuilder(new AdminClientConfig { BootstrapServers = "localhost:9092" }).Build();
     try
     {
-        consumer.Commit(consumeResult);
+        await adminClient.CreateTopicsAsync(new[] {
+            new TopicSpecification { Name = "mytopic", ReplicationFactor = 1, NumPartitions = 1 } });
     }
-    catch (KafkaException e)
+    catch (CreateTopicsException e)
     {
-        Console.WriteLine($"Commit error: {e.Error.Reason}");
+        Console.WriteLine(e.Message);
     }
 }
 
-//consumer.Close();
+async Task SendMessage()
+{
+    var config = new ProducerConfig { BootstrapServers = "localhost:9092" };
+
+    using var producer = new ProducerBuilder<Null, string>(config).Build();
+
+    foreach (var item in Enumerable.Range(1, 10).ToList())
+    {
+        var result = await producer.ProduceAsync("mytopic", new Message<Null, string> { Value = $"a log message {item}", Timestamp = Timestamp.Default });
+        foreach (var propertyInfo in result.GetType().GetProperties())
+        {
+            Console.WriteLine($"{propertyInfo.Name} = {propertyInfo.GetValue(result)}");
+        }
+        Console.WriteLine("---------------");
+        await Task.Delay(500);
+    }
+}
